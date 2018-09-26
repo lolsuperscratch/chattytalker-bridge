@@ -5,11 +5,9 @@ var client = new Discord.Client()
 var hookclient = new Discord.WebhookClient(process.env.HOOKID,process.env.HOOKTOKEN)
 client.on('message',function (message) {
    if (message.channel.id == "494576703000018955" && !message.author.bot) {
-      if (message.attachments) {
-      socket.emit('sendmessage',message.author.username+' [in bridge]',message.content+'<img src="'+message.attachments.first().url+'">');
-      } else {
+      
       socket.emit('sendmessage',message.author.username+' [in bridge]',message.content);
-      }
+      
       if (message.content.startsWith('/')) {
          message.author.send('Our Command is blocked cause you are using it on discord')
          message.react('⚠️')
