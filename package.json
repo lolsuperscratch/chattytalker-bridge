@@ -1,0 +1,9 @@
+{ 
+"name" : "chattytalker-bridge",
+"version" : "0.0.0",
+"description" : "",
+"dependencies" : {
+   "discord.js" : "*",
+   "socket.io-client":"*"
+}
+}
