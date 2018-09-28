@@ -10,18 +10,12 @@ client.on('message',function (message) {
       
       if (message.content.startsWith('/')) {
          message.author.send('Our Command is blocked cause you are using it on discord')
-         message.react('⚠️')
+         
       }
    }
 })
 socket.on('receive message',function (name,message) {
    hookclient.send(`**${name}**: ${message}`)
-})
-socket.on('connect',function () {
-   hookclient.send(`**connected**`)
-})
-socket.on('disconnect',function () {
-   hookclient.send(`**disconnected**`)
 })
 client.on('ready',function () {
    console.log('Ready!')
