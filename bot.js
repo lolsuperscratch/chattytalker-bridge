@@ -6,7 +6,7 @@ var hookclient = new Discord.WebhookClient(process.env.HOOKID,process.env.HOOKTO
 client.on('message',function (message) {
    if (message.channel.id == "494576703000018955" && !message.author.bot) {
       
-      socket.emit('sendmessage',message.author.username+' [in bridge]',message.content);
+      socket.emit('sendmessage',message.author.username+' [in bridge]',message.content,'#');
       
       if (message.content.startsWith('/')) {
          message.author.send('Our Command is blocked cause you are using it on discord')
@@ -14,7 +14,8 @@ client.on('message',function (message) {
       }
    }
 })
-socket.on('receive message',function (name,message) {
+socket.on('receive message',function (name,message,room) {
+   if (room !== "#") return;
    hookclient.send(`**${name}**: ${message}`)
 })
 client.on('ready',function () {
